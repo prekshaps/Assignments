@@ -1,0 +1,26 @@
+[
+    {
+        "id":"EMP101",
+        "firstName":"mark",
+        "lastName":"smith",
+        "email":"m@gmail.com"
+    },
+    {
+        "id":"EMP102",
+        "firstName":"jhon",
+        "lastName":"smith",
+        "email":"m@gmail.com"
+    },
+    {
+        "id":"EMP103",
+        "firstName":"tom",
+        "lastName":"smith",
+        "email":"m@gmail.com"
+    },
+    {
+        "id":"EMP104",
+        "firstName":"tony",
+        "lastName":"smith",
+        "emailId":"m@gmail.com"
+    }
+]
