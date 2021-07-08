@@ -22,6 +22,7 @@ import java.util.Optional;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
@@ -58,6 +59,25 @@ class ProductServiceTest {
         productService.addProduct(product1);
        verify(productRepository,times(1)).save(any());
 
+    }
+    
+    
+    @Test
+    public void GivenGetAllUsersShouldReturnListOfAllUsers() {
+    	productRepository.save(product1);
+    	when(productRepository.findAll()).thenReturn(productList);
+    	List<Product> productList1 = productService.getAllProducts();
+    	assertEquals(productList1,productList);
+    	verify(productRepository,times(1)).save(product1);
+    	verify(productRepository,times(1)).findAll();
+    }
+    
+    
+    @Test
+    public void givenIdToDeleteThenShouldDeleteTheProduct() {
+    	Mockito.when(productRepository.findById(1)).thenReturn(Optional.ofNullable(product1));
+        assertThat(productService.getProductByid(product1.getId())).isEqualTo(product1);
+    	
     }
     
     

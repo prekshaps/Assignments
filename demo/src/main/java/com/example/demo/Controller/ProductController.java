@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import java.util.List;
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,12 +13,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.Exception.BadArgumentException;
+import com.example.demo.Exception.InternalException;
 import com.example.demo.Exception.ProductAlreadyExistsException;
+import com.example.demo.Exception.ResourceNotFoundException;
 import com.example.demo.Service.ProductService;
 import com.example.demo.model.Product;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("api/v1")
 public class ProductController {
     private ProductService productService;
 
@@ -51,5 +55,23 @@ public class ProductController {
 
         return responseEntity;
    }
+    
+    @GetMapping("/exception/{exception_id}")
+    public void getSpecificException(@PathVariable("exception_id") String pException) {
+    	if("not_found".equals(pException)) {
+    		throw new ResourceNotFoundException("resource not found");
+    		}
+    	else if("bad_arguments".equals(pException)) {
+    		throw new BadArgumentException("bad arguments");
+    	}
+    	else {
+    		throw new InternalException("internal error");
+    	}
+    }
+    
+    @GetMapping("/exception/throw")
+    public void getException() throws Exception{
+      throw new Exception("error");
+    }
 
 }
