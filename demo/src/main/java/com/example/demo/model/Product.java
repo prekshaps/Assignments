@@ -3,11 +3,12 @@ package com.example.demo.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+
 @Entity
 public class Product {
 
     @Id
-    private int id;
+	private int id;
     private String name;
     private float price;
 
@@ -44,4 +45,6 @@ public class Product {
     public void setPrice(float price) {
         this.price = price;
     }
+
+	
 }

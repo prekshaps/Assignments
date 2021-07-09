@@ -1,8 +1,7 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Exception.BadArgumentException;
-import com.example.demo.Exception.InternalException;
-import com.example.demo.Exception.ResourceNotFoundException;
+
+
 import com.example.demo.Service.ProductService;
 import com.example.demo.model.Product;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,8 +21,11 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -57,7 +59,8 @@ class ProductControllerTest {
     void tearDown() {
         product = null;
     }
-
+    
+    
     @Test
     public void PostMappingOfProduct() throws Exception{
         when(productService.addProduct(any())).thenReturn(product);
@@ -105,6 +108,7 @@ class ProductControllerTest {
             throw new RuntimeException(e);
         }
     }
+    /*
     
     @Test
     public void givenNotFound_whenGetSpecificException_thenNotFoundCode() throws Exception{
@@ -134,7 +138,10 @@ class ProductControllerTest {
     	        .andExpect(result -> assertTrue(result.getResolvedException() instanceof InternalException))
     	        .andExpect(result -> assertEquals("dummy",result.getResolvedException().getMessage()));
     }
+    */
     
+    /*
+        
     @Test
     public void whenGetException_thenInternalServerError() throws Exception{
     	Assertions.assertThrows(Exception.class, new Executable(){
@@ -147,5 +154,5 @@ class ProductControllerTest {
 	    
 			
 		});
-    }
+    }*/
 }

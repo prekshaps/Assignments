@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import java.util.List;
 
+import javax.validation.constraints.Min;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.Exception.BadArgumentException;
-import com.example.demo.Exception.InternalException;
+import com.example.demo.Exception.BadRequestException;
 import com.example.demo.Exception.ProductAlreadyExistsException;
-import com.example.demo.Exception.ResourceNotFoundException;
 import com.example.demo.Service.ProductService;
 import com.example.demo.model.Product;
 
@@ -30,8 +29,9 @@ public class ProductController {
     }
 
     @PostMapping("product")
-    public ResponseEntity<Product> addProduct(@RequestBody Product product) throws ProductAlreadyExistsException {
-        Product saveProduct = productService.addProduct(product);
+    public ResponseEntity<Product> addProduct(@RequestBody Product product){
+        	Product saveProduct = productService.addProduct(product);
+        
         return new ResponseEntity<>(saveProduct, HttpStatus.CREATED);
     }
 
@@ -44,7 +44,8 @@ public class ProductController {
 
     @GetMapping("product/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable("id") int id){
-        return new ResponseEntity<>(productService.getProductByid(id),HttpStatus.OK);
+    	Product notPresent = productService.getProductByid(id);
+        return new ResponseEntity<>(notPresent,HttpStatus.OK);
     }
 
     @DeleteMapping("product/{id}")
@@ -56,22 +57,7 @@ public class ProductController {
         return responseEntity;
    }
     
-    @GetMapping("/exception/{exception_id}")
-    public void getSpecificException(@PathVariable("exception_id") String pException) {
-    	if("not_found".equals(pException)) {
-    		throw new ResourceNotFoundException("resource not found");
-    		}
-    	else if("bad_arguments".equals(pException)) {
-    		throw new BadArgumentException("bad arguments");
-    	}
-    	else {
-    		throw new InternalException("internal error");
-    	}
-    }
+   
     
-    @GetMapping("/exception/throw")
-    public void getException() throws Exception{
-      throw new Exception("error");
-    }
-
+   
 }

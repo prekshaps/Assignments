@@ -1,10 +1,14 @@
 package com.example.demo.Service;
 
 
+import org.junit.Rule;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.function.Executable;
+import org.junit.rules.ExpectedException;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -12,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.demo.Exception.ProductAlreadyExistsException;
+import com.example.demo.Exception.ProductNotFoundException;
 import com.example.demo.Repository.ProductRepository;
 import com.example.demo.model.Product;
 
@@ -23,7 +28,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -49,19 +54,6 @@ class ProductServiceTest {
         productList.add(product1);
         productList.add(product2);
     }
-
-    
-    @Test
-    void givenProductToAddShouldReturnAddedProduct() throws ProductAlreadyExistsException {//getall
-
-       
-        when(productRepository.save(any())).thenReturn(product1);
-        productService.addProduct(product1);
-       verify(productRepository,times(1)).save(any());
-
-    }
-    
-    
     @Test
     public void GivenGetAllUsersShouldReturnListOfAllUsers() {
     	productRepository.save(product1);
