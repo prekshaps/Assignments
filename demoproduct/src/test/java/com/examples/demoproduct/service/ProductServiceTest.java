@@ -14,7 +14,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.example2.demorestapi.Product;
+import com.examples.demoproduct.model.Product;
 import com.examples.demoproduct.Exception.ProductAlreadyExistsException;
 import com.examples.demoproduct.Exception.ProductNotFoundException;
 import com.examples.demoproduct.Repository.ProductRepository;

@@ -8,13 +8,15 @@ package com.examples.demoproduct.Controller;
 import java.util.List;
 
 import org.hamcrest.Matchers;
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.example2.demorestapi.Product;
+import com.examples.demoproduct.model.Product;
 import com.examples.demoproduct.Service.ProductService;
 
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
