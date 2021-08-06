@@ -1,0 +1,27 @@
+2021-08-06 17:21:09,892 INFO com.logging.loggingdemo.LoggingdemoApplication [main] Starting LoggingdemoApplication using Java 11.0.11 on BLR-P7112764LP with PID 17464 (D:\loggingdemo\target\classes started by P7112764 in D:\loggingdemo)
+2021-08-06 17:21:09,906 DEBUG com.logging.loggingdemo.LoggingdemoApplication [main] Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-08-06 17:21:09,907 INFO com.logging.loggingdemo.LoggingdemoApplication [main] No active profile set, falling back to default profiles: default
+2021-08-06 17:21:14,609 INFO com.logging.loggingdemo.LoggingdemoApplication [main] Started LoggingdemoApplication in 5.418 seconds (JVM running for 6.465)
+2021-08-06 17:33:48,397 INFO com.logging.loggingdemo.LoggingdemoApplication [main] Starting LoggingdemoApplication using Java 11.0.11 on BLR-P7112764LP with PID 16092 (D:\loggingdemo\target\classes started by P7112764 in D:\loggingdemo)
+2021-08-06 17:33:48,419 DEBUG com.logging.loggingdemo.LoggingdemoApplication [main] Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-08-06 17:33:48,420 INFO com.logging.loggingdemo.LoggingdemoApplication [main] No active profile set, falling back to default profiles: default
+2021-08-06 17:33:53,212 INFO com.logging.loggingdemo.LoggingdemoApplication [main] Started LoggingdemoApplication in 5.637 seconds (JVM running for 6.755)
+2021-08-06 17:38:54,177 INFO com.logging.loggingdemo.LoggingdemoApplication [main] Starting LoggingdemoApplication using Java 11.0.11 on BLR-P7112764LP with PID 17832 (D:\loggingdemo\target\classes started by P7112764 in D:\loggingdemo)
+2021-08-06 17:38:54,181 DEBUG com.logging.loggingdemo.LoggingdemoApplication [main] Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-08-06 17:38:54,182 INFO com.logging.loggingdemo.LoggingdemoApplication [main] No active profile set, falling back to default profiles: default
+2021-08-06 17:38:58,928 INFO com.logging.loggingdemo.LoggingdemoApplication [main] Started LoggingdemoApplication in 5.599 seconds (JVM running for 6.555)
+2021-08-06 17:39:16,430 TRACE com.logging.loggingdemo.DemoController [http-nio-8080-exec-2] trace
+2021-08-06 17:39:18,718 TRACE com.logging.loggingdemo.DemoController [http-nio-8080-exec-3] trace
+2021-08-06 17:39:19,386 TRACE com.logging.loggingdemo.DemoController [http-nio-8080-exec-4] trace
+2021-08-06 17:39:19,818 TRACE com.logging.loggingdemo.DemoController [http-nio-8080-exec-5] trace
+2021-08-06 17:39:20,287 TRACE com.logging.loggingdemo.DemoController [http-nio-8080-exec-6] trace
+2021-08-06 17:39:20,788 TRACE com.logging.loggingdemo.DemoController [http-nio-8080-exec-7] trace
+2021-08-06 17:39:21,368 TRACE com.logging.loggingdemo.DemoController [http-nio-8080-exec-8] trace
+2021-08-06 17:39:21,910 TRACE com.logging.loggingdemo.DemoController [http-nio-8080-exec-9] trace
+2021-08-06 18:28:19,614 INFO com.logging.loggingdemo.DemoControllerTest [main] Starting DemoControllerTest using Java 11.0.11 on BLR-P7112764LP with PID 15992 (started by P7112764 in D:\loggingdemo)
+2021-08-06 18:28:19,621 DEBUG com.logging.loggingdemo.DemoControllerTest [main] Running with Spring Boot v2.5.3, Spring v5.3.9
+2021-08-06 18:28:19,625 INFO com.logging.loggingdemo.DemoControllerTest [main] No active profile set, falling back to default profiles: default
+2021-08-06 18:28:22,123 INFO com.logging.loggingdemo.DemoControllerTest [main] Started DemoControllerTest in 3.109 seconds (JVM running for 5.472)
+2021-08-06 18:28:22,864 ERROR com.logging.loggingdemo.DemoController [main] FATAL ERROR
+2021-08-06 18:28:22,865 TRACE com.logging.loggingdemo.DemoController [main] TRACE
+2021-08-06 18:28:22,865 WARN com.logging.loggingdemo.DemoController [main] WARN
