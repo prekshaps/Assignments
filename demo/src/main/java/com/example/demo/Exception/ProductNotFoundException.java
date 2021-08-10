@@ -1,6 +1,10 @@
 package com.example.demo.Exception;
 
-
+/**
+ * product not found Exception
+ * @author P7112764
+ *
+ */
 public class ProductNotFoundException extends RuntimeException{
 
 	/**

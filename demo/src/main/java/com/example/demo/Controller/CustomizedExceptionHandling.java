@@ -15,55 +15,84 @@ import com.example.demo.Exception.ExceptionResponse;
 import com.example.demo.Exception.ProductAlreadyExistsException;
 import com.example.demo.Exception.ProductNotFoundException;
 
+/**
+ * Class which Handles the different Exceptions
+ * 
+ * @author P7112764
+ *
+ */
 @ControllerAdvice
-public class CustomizedExceptionHandling extends ResponseEntityExceptionHandler{
-	
+public class CustomizedExceptionHandling extends ResponseEntityExceptionHandler {
+	/**
+	 * 
+	 * @param exception
+	 * @param webRequest
+	 * @return
+	 */
 	@ExceptionHandler(BadRequestException.class)
-	public ResponseEntity<Object> handleExceptions(BadRequestException exception,WebRequest webRequest){
+	public ResponseEntity<Object> handleExceptions(BadRequestException exception, WebRequest webRequest) {
 		ExceptionResponse response = new ExceptionResponse();
 		response.setDateTime(LocalDateTime.now());
 		response.setMessage("BAD_REQUEST");
 		response.setStatus_Code(400);
 		response.setDescription("product price should not be leesthan 100");
-		ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+		ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
 		return entity;
-		
+
 	}
-	
+
+	/**
+	 * 
+	 * @param exception
+	 * @param webRequest
+	 * @return
+	 */
 	@ExceptionHandler(ProductAlreadyExistsException.class)
-	public ResponseEntity<Object> handleExceptions(ProductAlreadyExistsException exception,WebRequest webRequest){
+	public ResponseEntity<Object> handleExceptions(ProductAlreadyExistsException exception, WebRequest webRequest) {
 		ExceptionResponse response = new ExceptionResponse();
 		response.setDateTime(LocalDateTime.now());
 		response.setMessage("ALREADY_EXITS");
 		response.setStatus_Code(422);
 		response.setDescription("Product already exits please don't add");
-		ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.ALREADY_REPORTED);
+		ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.ALREADY_REPORTED);
 		return entity;
-		
+
 	}
+
+	/**
+	 * 
+	 * @param exception
+	 * @param webRequest
+	 * @return
+	 */
 	@ExceptionHandler(ProductNotFoundException.class)
-	public ResponseEntity<Object> handleExceptions(ProductNotFoundException exception,WebRequest webRequest){
+	public ResponseEntity<Object> handleExceptions(ProductNotFoundException exception, WebRequest webRequest) {
 		ExceptionResponse response = new ExceptionResponse();
 		response.setDateTime(LocalDateTime.now());
 		response.setMessage("NOT_FOUND");
 		response.setStatus_Code(400);
 		response.setDescription("Sorry Requested Product not present");
-		ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
+		ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
 		return entity;
-		
+
 	}
-	
+
+	/**
+	 * 
+	 * @param exception
+	 * @param webRequest
+	 * @return
+	 */
 	@ExceptionHandler(CustomException.class)
-	public ResponseEntity<Object> handleExceptions(CustomException exception,WebRequest webRequest){
+	public ResponseEntity<Object> handleExceptions(CustomException exception, WebRequest webRequest) {
 		ExceptionResponse response = new ExceptionResponse();
 		response.setDateTime(LocalDateTime.now());
 		response.setMessage("INTERNAL_SERVER_ERROR");
 		response.setStatus_Code(500);
 		response.setDescription("check the passcode");
-		ResponseEntity<Object> entity = new ResponseEntity<>(response,HttpStatus.INTERNAL_SERVER_ERROR);
+		ResponseEntity<Object> entity = new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		return entity;
-		
+
 	}
 
-	
 }

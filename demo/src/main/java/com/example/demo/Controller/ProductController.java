@@ -20,48 +20,74 @@ import com.example.demo.Service.ProductService;
 
 import com.example.demo.model.Product;
 
-
-
+/**
+ * Controller class specifies the endpoints ("api/v1")
+ * 
+ * @author P7112764
+ *
+ */
 @RestController
 @RequestMapping("api/v1")
 public class ProductController {
-	
-    private ProductService productService;
-    
-    
-    public ProductController(ProductService productService) {
+	/**
+	 * Represents the logic for methods
+	 */
+	private ProductService productService;
+
+	/**
+	 * Constructor that accepts the productService
+	 * 
+	 * @param productService
+	 */
+	public ProductController(ProductService productService) {
 		this.productService = productService;
-    }
-    @PostMapping("product")
-    public ResponseEntity<Product> addProduct(@RequestBody Product product){
-        	Product saveProduct = productService.addProduct(product);
-        
-        return new ResponseEntity<>(saveProduct, HttpStatus.CREATED);
-    }
+	}
 
-    @GetMapping("products")
-    public ResponseEntity<List<Product>> getAllProducts(){
+	/**
+	 * 
+	 * @param product accepts the product as argument
+	 * @return Returns the Response when it finds the endpoint ("product")
+	 */
+	@PostMapping("product")
+	public ResponseEntity<Product> addProduct(@RequestBody Product product) {
+		Product saveProduct = productService.addProduct(product);
 
-        return new ResponseEntity<List<Product>>(
-                (List <Product>) productService.getAllProducts(),HttpStatus.OK);
-    }
+		return new ResponseEntity<>(saveProduct, HttpStatus.CREATED);
+	}
 
-    @GetMapping("product/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable("id") int id){
-    	Product notPresent = productService.getProductByid(id);
-        return new ResponseEntity<>(notPresent,HttpStatus.OK);
-    }
+	/**
+	 * 
+	 * @return returns the all products when we use endpoint(products)
+	 */
+	@GetMapping("products")
+	public ResponseEntity<List<Product>> getAllProducts() {
 
-    @DeleteMapping("product/{id}")
-        public ResponseEntity<Product> deleteProduct(@PathVariable("id") int id) {
-        ResponseEntity responseEntity;
-        Product deletedProduct = productService.deleteProductById(id);
-        responseEntity = new ResponseEntity<Product>(deletedProduct, HttpStatus.OK);
+		return new ResponseEntity<List<Product>>((List<Product>) productService.getAllProducts(), HttpStatus.OK);
+	}
 
-        return responseEntity;
-   }
-    
-   
-    
-   
+	/**
+	 * 
+	 * @param id accepts the id as a parameter
+	 * @return Returns the products when it find endpoint(product/{id})
+	 */
+	@GetMapping("product/{id}")
+	public ResponseEntity<Product> getProductById(@PathVariable("id") int id) {
+		Product notPresent = productService.getProductByid(id);
+		return new ResponseEntity<>(notPresent, HttpStatus.OK);
+	}
+
+	/**
+	 * 
+	 * @param id accepts the id as argument
+	 * @return Returns the response when it finds the endpoint (product/{id})
+	 */
+	@DeleteMapping("product/{id}")
+	public ResponseEntity<Product> deleteProduct(@PathVariable("id") int id) {
+		ResponseEntity responseEntity;
+		Product deletedProduct = productService.deleteProductById(id);
+		responseEntity = new ResponseEntity<Product>(deletedProduct, HttpStatus.OK);
+
+		return responseEntity;
+	}
+
 }

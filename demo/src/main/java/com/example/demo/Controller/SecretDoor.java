@@ -7,26 +7,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Exception.CustomException;
 
+/**
+ * Controller class to throw the Exception when entered password is wrong
+ * 
+ * @author P7112764
+ *
+ */
 @RestController
 @RequestMapping("/secret-door")
-public class SecretDoor{
+public class SecretDoor {
 
+	/**
+	 * Handle the (/secret-door) endpoint and returns the response
+	 * 
+	 * @param passcode accepts the passcode
+	 * @return Returns the Response
+	 */
+	@GetMapping
+	public SecretDoorResponse secretBouncer(@RequestParam String passcode) {
+		if (!passcode.equals("mango")) {
+			throw new CustomException("Wrong passcode",
+					"You've entereed an incorrectpasscode,try agin with correct One", "Orange , juicy and sweet",
+					"Ask your friend for access at http://www.letmeinthisdoor.com",
+					"Reach out to http://www.letmeinthissecretdoor.com/support for more help");
 
-
-
-
-@GetMapping
-public SecretDoorResponse secretBouncer(@RequestParam String passcode) {
-	if(!passcode.equals("mango")) {
-		throw new CustomException(
-				"Wrong passcode",
-				"You've entereed an incorrectpasscode,try agin with correct One",
-				"Orange , juicy and sweet",
-				"Ask your friend for access at http://www.letmeinthisdoor.com",
-				"Reach out to http://www.letmeinthissecretdoor.com/support for more help"
-				);
-		
+		}
+		return new SecretDoorResponse("see you");
 	}
-	return new SecretDoorResponse("see you");
-}
 }

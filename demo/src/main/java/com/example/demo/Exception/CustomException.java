@@ -1,12 +1,18 @@
 package com.example.demo.Exception;
 
+/**
+ * custom Exception class
+ * 
+ * @author P7112764
+ *
+ */
+
 public class CustomException extends RuntimeException {
 
 	public CustomException(String string, String string2, String string3, String string4, String string5) {
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	/**
 	 * 
 	 */

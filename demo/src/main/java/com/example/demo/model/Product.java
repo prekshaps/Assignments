@@ -1,50 +1,103 @@
 package com.example.demo.model;
 
 import javax.persistence.Entity;
+
 import javax.persistence.Id;
 
-
+/**
+ * Product class as Pojo class
+ * 
+ * @author P7112764
+ *
+ */
 @Entity
 public class Product {
 
-    @Id
+	/**
+	 * Represents the id of product
+	 */
+	@Id
 	private int id;
-    private String name;
-    private float price;
+	/**
+	 * Represents the name of product
+	 */
+	private String name;
+	/**
+	 * Represents the price of product
+	 */
+	private float price;
 
+	/**
+	 * class Constructor
+	 */
+	public Product() {
+	}
 
-    public Product() {
-    }
+	/**
+	 * class constructor with the fields
+	 * 
+	 * @param id
+	 * @param name
+	 * @param price
+	 */
 
-    public Product(int id, String name, float price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
+	public Product(int id, String name, float price) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+	}
 
-    public int getId() {
-        return id;
-    }
+	/**
+	 * 
+	 * @return Returns the id of the product
+	 */
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	/**
+	 * 
+	 * @param id Accepts the id of product and set it on Product Object
+	 */
 
-    public String getName() {
-        return name;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	/**
+	 * 
+	 * @return Returns the name of the product
+	 */
 
-    public float getPrice() {
-        return price;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setPrice(float price) {
-        this.price = price;
-    }
+	/**
+	 * 
+	 * @param name accepts the name of the product
+	 */
 
-	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * 
+	 * @return Returns the price of the product
+	 */
+
+	public float getPrice() {
+		return price;
+	}
+
+	/**
+	 * 
+	 * @param price accepts the price of product
+	 */
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
 }
