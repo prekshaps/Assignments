@@ -13,6 +13,18 @@ public class Product {
 
 	private String productName;
 
+	public Product() {
+		super();
+	}
+
+	public Product(String productid, String productName, double price, String productCategory) {
+		super();
+		this.productid = productid;
+		this.productName = productName;
+		this.price = price;
+		this.productCategory = productCategory;
+	}
+
 	private double price;
 
 	@PartitionKey

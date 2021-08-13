@@ -11,4 +11,7 @@ import java.util.List;
 public interface ProductRepository extends CosmosRepository<Product, String> {
 	List<Product> findByProductName(String productName);
 
+	Object findById(String productid, String productCategory);
+
+	
 }
