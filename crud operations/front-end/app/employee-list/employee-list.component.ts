@@ -11,34 +11,33 @@ import { EmployeeServiceService } from '../employee-service.service';
 })
 export class EmployeeListComponent implements OnInit {
 
-  employees:Observable<Employee[]>;
+  employees: Observable<Employee[]>;
 
 
-  constructor(private employeeService:EmployeeServiceService,private router:Router) { }
+  constructor(private employeeService: EmployeeServiceService, private router: Router) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.reloadData();
   }
-  
-  reloadData(){
+
+  reloadData() {
     this.employees = this.employeeService.getEmployeesList();
   }
 
-  deleteEmployee(id: number){
+  deleteEmployee(id: number) {
     this.employeeService.deleteEmployee(id)
-        .subscribe(
-          data =>{
-            console.log(data);
-            this.reloadData();
-          },
-          error => console.log(error));
-        }
+      .subscribe(
+        data => {
+          console.log(data);
+          this.reloadData();
+        },
+        error => console.log(error));
+  }
+  employeeDetails(id: number) {
+    this.router.navigate(['details', id]);
+  }
 
-        employeeDetails(id:number){
-          this.router.navigate(['details',id]);
-        }
-
-        updateEmployee(id:number){
-          this.router.navigate(['update',id]);
-        }
-      }
+  updateEmployee(id: number) {
+    this.router.navigate(['update', id]);
+  }
+}

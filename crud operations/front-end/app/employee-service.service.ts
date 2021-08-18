@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EmployeeServiceService {
+  [x: string]: any;
   private baseUrl = "http://localhost:8080/api/v1/users";
   constructor(private http: HttpClient) { }
 
@@ -14,7 +15,7 @@ export class EmployeeServiceService {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
   createEmployee(employee: Object): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, employee)
+    return this.http.post(`${this.baseUrl}`, employee);
 
   }
   updateEmployee(id: number, value: any): Observable<Object> {

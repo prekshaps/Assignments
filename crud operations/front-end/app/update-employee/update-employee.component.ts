@@ -34,11 +34,9 @@ export class UpdateEmployeeComponent implements OnInit {
       }, error => console.log(error));
 
   }
-
   onSubmit() {
     this.updateEmployee();
   }
-
   gotoList() {
     this.router.navigate(['/employees']);
   }

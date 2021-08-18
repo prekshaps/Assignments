@@ -10,13 +10,10 @@ public class User {
 	@Id
 	private int id;
 
-	
 	private String firstName;
 
-	
 	private String lastName;
 
-	
 	private String emailId;
 
 	public User() {
@@ -37,7 +34,7 @@ public class User {
 		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", emailId=" + emailId + "]";
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
