@@ -12,8 +12,7 @@ import { EmployeeServiceService } from '../employee-service.service';
 export class EmployeeListComponent implements OnInit {
 
   employees: Observable<Employee[]>;
-
-
+  checked: boolean;
   constructor(private employeeService: EmployeeServiceService, private router: Router) { }
 
   ngOnInit() {
@@ -22,6 +21,12 @@ export class EmployeeListComponent implements OnInit {
 
   reloadData() {
     this.employees = this.employeeService.getEmployeesList();
+  }
+
+  isActive() {
+    if (this.checked = true) {
+      this.employeeService.getEmployee;
+    }
   }
 
   deleteEmployee(id: number) {
@@ -41,3 +46,5 @@ export class EmployeeListComponent implements OnInit {
     this.router.navigate(['update', id]);
   }
 }
+
+

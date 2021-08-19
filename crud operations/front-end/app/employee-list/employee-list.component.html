@@ -3,7 +3,7 @@
         <h2>Employee List</h2>
     </div>
     <div class="panel-body">
-        <table class="table table-striped" *ngFor="let employee of employees | async">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Firstname</th>
@@ -13,19 +13,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr (click)="employeeDetails(employee.id)">
+                <tr *ngFor="let employee of employees | async">
                     <td>{{employee.firstName}}</td>
                     <td>{{employee.lastName}}</td>
                     <td>{{employee.emailId}}</td>
-                    <td><input type="checkbox">
+                    <td><input type="checkbox" [checked]="isActive()">
                     </td>
                 </tr>
             </tbody>
-            <button (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
-            <button (click)="updateEmployee(employee.id)" class="btn btn-success"
+
+
+            <button *ngIf="employees" (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</button>
+            <button *ngIf="employees" (click)="updateEmployee(employee.id)" class="btn btn-success"
                 style="margin-left: 10px">Update</button>
             <!--<button (click)="employeeDetails(employee.id)" class="btn btn-info"
                             style="margin-left: 10px">Details</button>-->
+
         </table>
+
+
     </div>
 </div>
