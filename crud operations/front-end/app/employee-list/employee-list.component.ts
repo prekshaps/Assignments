@@ -23,9 +23,9 @@ export class EmployeeListComponent implements OnInit {
     this.employees = this.employeeService.getEmployeesList();
   }
 
-  isActive() {
-    if (this.checked = true) {
-      this.employeeService.getEmployee;
+  isActive(id: number) {
+    if (this.checked == true) {
+      this.employeeService.getEmployee(id);
     }
   }
 
