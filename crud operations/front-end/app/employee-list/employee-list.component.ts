@@ -26,9 +26,9 @@ export class EmployeeListComponent implements OnInit {
   isActive(id: number) {
     if (this.checked == true) {
       this.employeeService.getEmployee(id);
+
     }
   }
-
   deleteEmployee(id: number) {
     this.employeeService.deleteEmployee(id)
       .subscribe(
@@ -45,6 +45,7 @@ export class EmployeeListComponent implements OnInit {
   updateEmployee(id: number) {
     this.router.navigate(['update', id]);
   }
+
 }
 
 
