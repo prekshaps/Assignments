@@ -11,41 +11,65 @@ import { EmployeeServiceService } from '../employee-service.service';
 })
 export class EmployeeListComponent implements OnInit {
 
-  employees: Observable<Employee[]>;
-  checked: boolean;
+  public employees:Employee[];
+  employeearray: Array<Employee> = [];
+  deleteresult: String;
+
   constructor(private employeeService: EmployeeServiceService, private router: Router) { }
 
-  ngOnInit() {
-    this.reloadData();
+  ngOnInit():void {
+    this.getEmployees();
   }
-
-  reloadData() {
-    this.employees = this.employeeService.getEmployeesList();
+  private getEmployees(){
+    this.employeeService.getEmployeesList().subscribe(data => {
+      this.employees = data;
+    })
   }
-
-  isActive(id: number) {
-    if (this.checked == true) {
-      this.employeeService.getEmployee(id);
-
+  
+  isActive(e: any, employeeitem: Employee) {
+    if (e.target.checked) {
+      this.employeearray.push(employeeitem);
+    } else {
+      var r = this.employeearray.indexOf(employeeitem);
+      this.employeearray.splice(r,1);
     }
   }
-  deleteEmployee(id: number) {
-    this.employeeService.deleteEmployee(id)
+
+  updateEmployee() {
+    var l = this.employeearray.length;
+    if (l > 1 || l == 0) {
+      if (l > 1) {
+        alert("select only single record " + l);
+      }
+      if (l == 0) {
+        alert("please select single record do you want to update " + l);
+      }
+    }
+    if (l == 1) {
+      var employee = this.employeearray[0];
+      this.router.navigate(['update', employee.id]);
+    }
+  }
+  deleteEmployee() {
+    var ld = this.employeearray.length;
+    if (ld > 0) {
+      for (let eachemployee of this.employeearray) {
+        this.employeeService.deleteEmployee(eachemployee.id)
       .subscribe(
         data => {
           console.log(data);
-          this.reloadData();
+          this.getEmployees();
         },
         error => console.log(error));
+        }
+      }
+    else {
+      alert("Please select atleast one record");
+    }
   }
+
   employeeDetails(id: number) {
     this.router.navigate(['details', id]);
   }
 
-  updateEmployee(id: number) {
-    this.router.navigate(['update', id]);
-  }
-
 }
-
-

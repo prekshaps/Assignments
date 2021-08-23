@@ -13,18 +13,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let employee of employees | async">
+                <tr *ngFor="let employee of employees">
                     <td>{{employee.firstName}}</td>
                     <td>{{employee.lastName}}</td>
                     <td>{{employee.emailId}}</td>
-                    <td><input type="checkbox" [checked]="isActive(employee.id)"></td>
+                    <td><input type="checkbox" (change)="isActive($event,employee)"></td>
                 </tr>
             </tbody>
+            <button (click)="deleteEmployee()" class="btn btn-danger">Delete</button>
+            <button (click)="updateEmployee()" class="btn btn-success" style="margin-left: 10px">Update</button>
 
-            <button *ngFor="let employee of employees | async" (click)="deleteEmployee(employee.id)"
-                class="btn btn-danger">Delete</button>
-            <button *ngFor="let employee of employees | async" (click)="updateEmployee(employee.id)"
-                class="btn btn-success" style="margin-left: 10px">Update</button>
 
             <!--<button (click)="employeeDetails(employee.id)" class="btn btn-info"
                             style="margin-left: 10px">Details</button>-->
