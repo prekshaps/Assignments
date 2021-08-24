@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Employee } from '../employee'
 import { EmployeeServiceService } from '../employee-service.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-employee',
@@ -11,35 +12,26 @@ import { Router } from '@angular/router';
 export class CreateEmployeeComponent implements OnInit {
 
   employee: Employee = new Employee();
-  submitted = false;
-
   constructor(private employeeService: EmployeeServiceService, private router: Router) { }
-
-
   ngOnInit() {
   }
-  newEmployee(): void {
-    this.submitted = false;
-    this.employee = new Employee();
-  }
+  saveEmployee(){
+  this.employeeService.createEmployee(this.employee).subscribe( data =>{
+    this.goToEmployeeList();
+  },
+  error => console.log(error));
+}
+goToEmployeeList(){
+  this.router.navigate(['/employees']);
+}
+onSubmit(){
+  Swal.fire(
+    'Done',
+    'Employee Successfully added',
+    'success'
+  )
 
-  save() {
-    this.employeeService
-      .createEmployee(this.employee).subscribe(data => {
-        console.log(data)
-        this.employee = new Employee();
-        this.gotoList();
-      },
-        error => console.log(error));
-  }
-
-  onSubmit() {
-    this.submitted = true;
-    this.save();
-  }
-
-  gotoList() {
-    this.router.navigate(['/employees']);
-  }
+ this.saveEmployee();
+}
 
 }

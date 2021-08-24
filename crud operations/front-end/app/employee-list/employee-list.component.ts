@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import Swal from 'sweetalert2';
 import { Employee } from '../employee';
 import { EmployeeServiceService } from '../employee-service.service';
 
@@ -11,27 +12,30 @@ import { EmployeeServiceService } from '../employee-service.service';
 })
 export class EmployeeListComponent implements OnInit {
 
-  public employees:Employee[];
+  public employees: Employee[];
   employeearray: Array<Employee> = [];
   deleteresult: String;
+  toggleBool: boolean = true;
 
   constructor(private employeeService: EmployeeServiceService, private router: Router) { }
 
-  ngOnInit():void {
+  ngOnInit(): void {
     this.getEmployees();
   }
-  private getEmployees(){
+  private getEmployees() {
     this.employeeService.getEmployeesList().subscribe(data => {
       this.employees = data;
     })
   }
-  
+
   isActive(e: any, employeeitem: Employee) {
     if (e.target.checked) {
       this.employeearray.push(employeeitem);
+      this.toggleBool = false;
     } else {
       var r = this.employeearray.indexOf(employeeitem);
-      this.employeearray.splice(r,1);
+      this.employeearray.splice(r, 1);
+      this.toggleBool = true;
     }
   }
 
@@ -47,22 +51,29 @@ export class EmployeeListComponent implements OnInit {
     }
     if (l == 1) {
       var employee = this.employeearray[0];
+
       this.router.navigate(['update', employee.id]);
     }
+
   }
   deleteEmployee() {
     var ld = this.employeearray.length;
     if (ld > 0) {
       for (let eachemployee of this.employeearray) {
         this.employeeService.deleteEmployee(eachemployee.id)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.getEmployees();
-        },
-        error => console.log(error));
-        }
+          .subscribe(
+            data => {
+              console.log(data);
+              Swal.fire(
+                'Done',
+                'Employee Successfully deleted',
+                'success'
+              )
+              this.getEmployees();
+            },
+            error => console.log(error));
       }
+    }
     else {
       alert("Please select atleast one record");
     }
