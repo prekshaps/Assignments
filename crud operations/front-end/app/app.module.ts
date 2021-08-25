@@ -10,6 +10,10 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 
@@ -27,6 +31,10 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]

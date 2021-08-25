@@ -1,3 +1,4 @@
+<mat-progress-spinner style="margin:0 auto;" mode="indeterminate" color="success" *ngIf='showSpinner'></mat-progress-spinner>
 <div class="panel panel-primary">
     <div class="panel-heading">
         <h2>Employee List</h2>
@@ -20,8 +21,8 @@
                     <td><input type="checkbox" (change)="isActive($event,employee)"></td>
                 </tr>
             </tbody>
-            <button [disabled]="toggleBool" (click)="deleteEmployee()" class="btn btn-danger">Delete</button>
-            <button [disabled]="toggleBool" (click)="updateEmployee()" class="btn btn-success"
+            <button mat-button [disabled]="toggleBool" (click)="deleteEmployee()" class="btn btn-danger">Delete</button>
+            <button mat-button [disabled]="toggleBool" (click)="updateEmployee()" class="btn btn-success"
                 style="margin-left: 10px">Update</button>
 
 

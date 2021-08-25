@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import Swal from 'sweetalert2';
+
 import { Employee } from '../employee';
 import { EmployeeServiceService } from '../employee-service.service';
 
@@ -16,6 +15,8 @@ export class EmployeeListComponent implements OnInit {
   employeearray: Array<Employee> = [];
   deleteresult: String;
   toggleBool: boolean = true;
+  showSpinner=false;
+  
 
   constructor(private employeeService: EmployeeServiceService, private router: Router) { }
 
@@ -23,6 +24,10 @@ export class EmployeeListComponent implements OnInit {
     this.getEmployees();
   }
   private getEmployees() {
+    this.showSpinner = true;
+    setTimeout(() =>{
+      this.showSpinner = false;
+    } , 6000)
     this.employeeService.getEmployeesList().subscribe(data => {
       this.employees = data;
     })
@@ -64,11 +69,6 @@ export class EmployeeListComponent implements OnInit {
           .subscribe(
             data => {
               console.log(data);
-              Swal.fire(
-                'Done',
-                'Employee Successfully deleted',
-                'success'
-              )
               this.getEmployees();
             },
             error => console.log(error));
@@ -84,3 +84,4 @@ export class EmployeeListComponent implements OnInit {
   }
 
 }
+
