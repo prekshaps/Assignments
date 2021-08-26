@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 
 
@@ -24,7 +26,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     CreateEmployeeComponent,
     UpdateEmployeeComponent,
     EmployeeDetailsComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     HttpClientModule,
     BrowserAnimationsModule,
     MatProgressSpinnerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   
   ],
   providers: [],

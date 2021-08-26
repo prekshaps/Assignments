@@ -9,7 +9,7 @@ import { Employee } from './employee';
 })
 export class EmployeeServiceService {
   [x: string]: any;
-  private baseUrl = "http://localhost:8080/api/v1/users";
+  private baseUrl = "http://localhost:8080/api/v1/employees";
   constructor(private http: HttpClient) { }
 
   getEmployee(id: number): Observable<any> {
