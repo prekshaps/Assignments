@@ -1,0 +1,32 @@
+        <mat-card-header>
+            <mat-card-title>RPA Search</mat-header-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field appearance="fill" class="margin-field">
+                <mat-label>--Select--</mat-label>
+                <mat-select [formControl]="selects" multiple>
+                    <mat-select-trigger>
+                        {{selects.value ? selects.value[0] : ''}}
+                        <span *ngIf="selects.value?.length > 1" class="additional-selection">
+                            (+{{selects.value.length - 1}} {{selects.value?.length === 2 ? 'other' : 'others'}})
+                        </span>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let select of toppingList" [value]="select">{{select}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <p>
+                <mat-form-field appearance="outline" class="margin-field">
+                    <mat-label>provide input</mat-label>
+                    <input matInput placeholder="Placeholder">
+                </mat-form-field>
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button>Search</button>
+            <button>Reset</button>
+        </mat-card-actions>
+
+X08359422
+1001
+
+X16552122

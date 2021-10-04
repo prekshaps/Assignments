@@ -1,0 +1,64 @@
+ private ResponseEntity<Object> checkForNulls(LocationType locationType) {
+        List<String> errorList = new ArrayList<>();
+        String domainName = locationType.getLocationGid().getGid().getDomainName();
+        if (!domainName.equalsIgnoreCase("CTC")) {
+            errorList.add("The domainName " + domainName + " is currently not supported. " +
+                    "Supported domains: CTC");
+        }
+        if (ObjectUtils.isEmpty(locationType.getLocationGid().getGid().getXid())) {
+            errorList.add("CarrierId cannot be empty");
+        }
+        if (ObjectUtils.isEmpty(locationType.getLocationName())) {
+            errorList.add("CarrierName cannot be empty");
+        }
+        for (AddressLinesType eachAddressLine : locationType.getAddress().getAddressLines()) {
+            String seqno = eachAddressLine.getSequenceNumber();
+            if (seqno.equals("1") && ObjectUtils.isEmpty(eachAddressLine.getAddressLine())) {
+                errorList.add("Address line1 cannot be empty");
+            }
+        }
+        Map<LocationType,String> responses = new HashMap<>();
+        responses.put(ObjectUtils.isEmpty(locationType.getAddress().getCity()),"City cannot be empty");
+        responses.put(ObjectUtils.isEmpty(locationType.getAddress().getCity()),"City cannot be empty");
+
+       if (ObjectUtils.isEmpty(locationType.getAddress().getCity())) {
+            errorList.add("City cannot be empty");
+        }
+    
+        if (ObjectUtils.isEmpty(locationType.getAddress().getCountryCode3Gid().getGid().getXid())) {
+            errorList.add("Country code cannot be empty");
+        }
+        if (ObjectUtils.isEmpty(locationType.getAddress().getPostalCode())) {
+            errorList.add("Postal code cannot be empty");
+        }
+        if (ObjectUtils.isEmpty(locationType.getAddress().getProvinceCode())) {
+            errorList.add("Province code cannot be empty");
+        }
+        int i = 1;
+        for (ContactType eachContact : locationType.getContact()) {
+            if (ObjectUtils.isEmpty(eachContact.getIsPrimaryContact())) {
+                errorList.add("Primary contact at index " + i + " is not provided");
+            }
+            if (ObjectUtils.isEmpty(eachContact.getExternalSystemGid().getGid().getXid())) {
+                errorList.add("Contact id at index " + i + " is mandatory field");
+            }
+            i++;
+        }
+        if (ObjectUtils.isEmpty(locationType.getServiceProvider().getScacGid().getGid().getXid())) {
+            errorList.add("SCAC cannot be empty");
+        }
+        if (ObjectUtils.isEmpty(locationType.getIsActive())) {
+            errorList.add("IsActive flag cannot be empty");
+        }
+        i = 1;
+        for (LocationRefnumType eachRef : locationType.getLocationRefnum()) {
+            if (ObjectUtils.isEmpty(eachRef.getLocationRefnumValue())) {
+                errorList.add("LocationRefnumValue at index " + i + " is empty");
+            }
+            i++;
+        }
+        return ResponseEntity.badRequest().body(errorList);
+
+ 
+
+    }

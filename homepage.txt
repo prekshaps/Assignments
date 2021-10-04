@@ -1,0 +1,129 @@
+<div class="bootstrap-wrapper">
+        <div class="row mt20 ml20 mr20">
+            <div class="col-md-12">
+                <mat-card class="margin">
+                    <mat-card-header>
+                        <mat-card-title class="full-width margin">RPA Search</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <form>
+                            <table class="full-width" cellspacing="0">
+                                <tr>
+                                    <td>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>--Select--</mat-label>
+                                            <mat-select [formControl]="selects" multiple>
+                                                <mat-select-trigger>
+                                                    {{selects.value ? selects.value[0] : ''}}
+                                                    <span *ngIf="selects.value?.length > 1"
+                                                        class="additional-selection">
+                                                        (+{{selects.value.length - 1}} {{selects.value?.length === 2 ?
+                                                        'other' :
+                                                        'others'}})
+                                                    </span>
+                                                </mat-select-trigger>
+                                                <mat-option *ngFor="let select of selectList" [value]="select">
+                                                    {{select}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </td>
+                                    <td>
+                                        <mat-form-field appearance="fill">
+                                            <mat-label>Enter a date range</mat-label>
+                                            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                                                <input matStartDate formControlName="start" placeholder="Start date">
+                                                <input matEndDate formControlName="end" placeholder="End date">
+                                            </mat-date-range-input>
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-date-range-picker #picker></mat-date-range-picker>
+                                        </mat-form-field>
+                                    </td>
+                                </tr>
+                            </table>
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <input matInput placeholder="input">
+                                </mat-form-field>
+                            </p>
+                            <button mat-raised-button color="primary">Search</button>
+                            <button mat-raised-button class="ml10" color="accent">Reset</button>
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <mat-card style="background-color:yellowgreen" class="mt20 small-card">
+        <table>
+            <tr>
+                <td>
+                    <h3>RPA with Vendor instruction</h3>
+                </td>
+                <td><button style="margin-left:270px">RUN REPORT</button></td>
+            </tr>
+        </table>
+    </mat-card>
+    <mat-card style="background-color:rgb(245, 245, 116);" class="mt20 small-card">
+        <table>
+            <tr>
+                <td>
+                    <h3>RPA ON Hold</h3>
+                </td>
+                <td><button style="margin-left:370px">RUN REPORT</button></td>
+            </tr>
+        </table>
+    </mat-card>
+    <mat-card style="background-color:sandybrown" class="mt20 small-card">
+        <table>
+            <tr>
+                <td>
+                    <h3>Rejected RPA's</h3>
+                </td>
+                <td><button style="margin-left:365px">RUN REPORT</button></td>
+            </tr>
+        </table>
+    </mat-card>
+</mat-card>
+
+
+
+
+
+displayedColumns: string[] = ['po', 'rpa', 'duedate', 'shipment','vendor','vendorname'];
+  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  //Material table sorting and pagination settings
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
+  constructor() { }
+
+  ngOnInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    //Custom filter according to name column
+    this.dataSource.filterPredicate = (data:
+      {vendorname: string}, filterValue: string) =>
+      data.vendorname.trim().toLowerCase().indexOf(filterValue) !== -1;
+  }
+  onChange(getvendorName)
+  {
+    /* configure filter */
+    
+      this.dataSource.filter = getvendorName.trim().toLowerCase();
+  }
+}
+
+  export interface PeriodicElement {
+    po: number;
+    rpa: number;
+    duedate: Date;
+    shipment: number;
+    vendor:string;
+    vendorname:string;
+  }
+  const ELEMENT_DATA: PeriodicElement[] = [
+    {po:1,rpa:1111,duedate:new Date(2015, 9, 24),shipment:1,vendor:'GT102',vendorname:'vendor1'},
+    {po:2,rpa:2222,duedate:new Date(2016, 11, 24),shipment:2,vendor:'GT103',vendorname:'vendor2'},
+    {po:3,rpa:3333,duedate:new Date(2015, 10, 25),shipment:1,vendor:'GT104',vendorname:'vendor3'},
+    {po:4,rpa:4444,duedate:new Date(2017, 15, 24),shipment:1,vendor:'GT102',vendorname:'vendor4'}
+  ];
