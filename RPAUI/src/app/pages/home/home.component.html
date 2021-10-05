@@ -1,0 +1,103 @@
+<h1 style="text-align: center;color: blueviolet;text-decoration:underline;">RPA Management</h1>
+
+<mat-toolbar>
+  <a class="remove-line" routerLink="/">
+    TOPIC
+  </a>
+  <a class="remove-line space" [routerLink]="'/edit-rpa'">
+    Edit RPA
+  </a>
+  <span>|</span>
+  <a class="remove-line" [routerLink]="'/validation-errors'">
+    validation-errors
+  </a>
+  <span>|</span>
+
+  <a class="remove-line" [routerLink]="'/parameter-tolerances'">
+    Parameter Tolerances
+  </a>
+  <span>|</span>
+  <a class="remove-line" [routerLink]="'/accuracy-parameters'">
+    Accuracy Parameter
+  </a>
+</mat-toolbar>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">RPA SEARCH</h5>
+        <button class="btn btn-sm btn-secondary ml-5" [matMenuTriggerFor]="filterBy">Column Search</button>
+        <mat-menu #filterBy="matMenu">
+          <div (click)="$event.stopPropagation()">
+            <div *ngFor="let filter of customFilters">
+              <span class="ml-1">
+                {{filter.column}}
+              </span>
+              <span class="ml-1 mr-1">like</span>
+              <span>
+                <input class="form-control-sm ml-1 mr-1" type="text" placeholder="Search for" style="max-width: 150px;"
+                  [(ngModel)]="filter.value">
+              </span>
+            </div>
+            <span>
+              <button class="btn btn-sm btn-light ml-2" *ngIf="!addFilterFlag" mat-raised-button
+                (click)="$event.stopPropagation(); addFilterFlag = true" title=" Add Filter">
+                <i class="fa fa-plus-square" aria-hidden="true"></i> Add Filter
+              </button>
+              <div *ngIf="addFilterFlag">
+                <select class="ml-2" [(ngModel)]="selectedCustomColumn">
+                  <ng-container *ngFor="let column of displayedColumns">
+                    <option value="null" disabled hidden></option>
+                    <option *ngIf="ifExists(column)" [value]="column">{{column}}</option>
+                  </ng-container>
+                </select>
+                <button class="btn btn-sm btn-light ml-2 mr-2"
+                  (click)="addFilter(selectedCustomColumn);addFilterFlag = false">Add</button>
+              </div>
+              <button class="btn btn-sm btn-primary ml-2" (click)="customSearch()">Search</button>
+              <button class="btn btn-sm btn-primary ml-2 mr-2" (click)="clearCustomFilter()">Clear</button>
+            </span>
+          </div>
+        </mat-menu>
+        <input class="form-control-sm ml-2" type="text" #inp>
+        <button class="btn btn-sm btn-primary  ml-20" (click)="applyFilter(inp.value)">Search</button>
+        <button class="btn btn-sm btn-primary  ml-20" (click)="clearCommonFilter(inp)">Clear</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<mat-table #table [dataSource]="dataSource" multiTemplateDataRows>
+
+  <ng-container matColumnDef="po">
+    <mat-header-cell *matHeaderCellDef>PO</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.po}} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="rpa">
+    <mat-header-cell *matHeaderCellDef>RPA</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.rpa}} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="shipment">
+    <mat-header-cell *matHeaderCellDef> SHIPMENT </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.shipment}} </mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="vendor">
+    <mat-header-cell *matHeaderCellDef>VENDOR</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.vendor}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="vendorname">
+    <mat-header-cell *matHeaderCellDef>VENDORNAME</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.vendorname}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" matRipple class="element-row"></mat-row>
+</mat-table>-->
+
+
