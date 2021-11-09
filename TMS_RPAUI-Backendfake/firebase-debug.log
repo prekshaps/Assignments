@@ -1,0 +1,52 @@
+[debug] [2021-10-29T15:41:05.295Z] ----------------------------------------------------------------------
+[debug] [2021-10-29T15:41:05.298Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\p7112792\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2021-10-29T15:41:05.298Z] CLI Version:   9.21.0
+[debug] [2021-10-29T15:41:05.298Z] Platform:      win32
+[debug] [2021-10-29T15:41:05.299Z] Node Version:  v14.16.0
+[debug] [2021-10-29T15:41:05.304Z] Time:          Fri Oct 29 2021 21:11:05 GMT+0530 (India Standard Time)
+[debug] [2021-10-29T15:41:05.304Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-29T15:41:05.323Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-29T15:41:05.323Z] > authorizing via signed-in user (maddipatla.madhura1998@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\TMS-backend-fake\rpa
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2021-10-29T15:41:18.714Z] > refreshing access token with scopes: []
+[debug] [2021-10-29T15:41:18.714Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-29T15:41:19.170Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Fri, 29 Oct 2021 15:42:50 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-29T15:41:19.392Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2021-10-29T15:41:20.380Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2021-10-29T15:41:20.381Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project tms-backend-fake (TMS-backend-fake) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2021-10-29T15:43:09.484Z] Error: ENOENT: no such file or directory, open 'D:\TMS-backend-fake\rpa\target\rpa-0.0.1-SNAPSHOT.jar\404.html'
+    at Object.openSync (fs.js:476:3)
+    at Object.writeFileSync (fs.js:1467:35)
+    at Object.createFileSync (C:\Users\p7112792\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\fs-extra\lib\ensure\file.js:43:6)
+    at Config.writeProjectFile (C:\Users\p7112792\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:144:12)
+    at C:\Users\p7112792\AppData\Roaming\npm\node_modules\firebase-tools\lib\config.js:162:22
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+[error] 
+[error] Error: An unexpected error has occurred.
